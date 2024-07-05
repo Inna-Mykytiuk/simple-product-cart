@@ -1,5 +1,9 @@
 import React from "react";
 
 export default function Details() {
-  return <div>Details Page</div>;
+  return (
+    <section>
+      <div className="container">Details page</div>
+    </section>
+  );
 }

@@ -10,7 +10,6 @@ const Details = lazy(() => import("./pages/Details"));
 function App() {
   return (
     <>
-      <p className="text-3xl text-red">dsfdfsdf</p>
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
