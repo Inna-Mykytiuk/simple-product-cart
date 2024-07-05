@@ -1,14 +1,11 @@
-import type { Config } from 'tailwindcss';
-
-const config = {
-  darkMode: ['class'],
+/** @type {import('tailwindcss').Config} */
+export default {
   content: [
-    './src/**/*.{js,jsx,ts,tsx}',
+    "./index.html",
+    "./src/**/*.{js,ts,jsx,tsx}",
     "./src/components/**/*.{js,ts,jsx,tsx}",
-    './src/pages/**/*.{js,jsx,ts,tsx}',
-
+    "/src/pages/**/*.{js,jsx,ts,tsx}",
   ],
-  prefix: '',
   theme: {
     screens: {
       sm: '480px',
@@ -48,10 +45,6 @@ const config = {
           to: { height: '0' },
         },
       },
-      animation: {
-        'accordion-down': 'accordion-down 0.2s ease-out',
-        'accordion-up': 'accordion-up 0.2s ease-out',
-      },
       colors: {
         primary: {
           DEFAULT: '#222222',
@@ -64,7 +57,6 @@ const config = {
       },
     },
   },
-  plugins: [require('tailwindcss-animate')],
-} satisfies Config;
+  plugins: [],
+}
 
-export default config;

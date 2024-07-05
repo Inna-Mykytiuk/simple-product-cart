@@ -1,7 +1,7 @@
 import { lazy } from "react";
 import { Route, Routes } from "react-router-dom";
-
 import "./App.css";
+
 import Layout from "./components/Layout";
 
 const Home = lazy(() => import("./pages/Home"));
@@ -10,6 +10,7 @@ const Details = lazy(() => import("./pages/Details"));
 function App() {
   return (
     <>
+      <p className="text-3xl text-red">dsfdfsdf</p>
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
