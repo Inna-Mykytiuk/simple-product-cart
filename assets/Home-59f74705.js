@@ -1,0 +1,1 @@
+import{j as s}from"./index-cdf1b0f6.js";function t(){return s.jsx("section",{children:s.jsx("div",{className:"container",children:s.jsx("h1",{className:"text-3xl my-5",children:"List Products"})})})}export{t as default};
