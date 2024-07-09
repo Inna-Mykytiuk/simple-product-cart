@@ -1,6 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
 import { IoCartOutline } from "react-icons/io5";
+import { addToCart } from "../store/cart";
 
 interface ProductCartProps {
   data: {
@@ -12,8 +14,32 @@ interface ProductCartProps {
   };
 }
 
+interface RootState {
+  cart: {
+    cartItems: Array<{
+      id: number;
+      name: string;
+      price: number;
+      image: string;
+      slug: string;
+    }>;
+  };
+}
+
 const ProductCart: React.FC<ProductCartProps> = (props) => {
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const carts = useSelector((store: RootState) => store.cart.cartItems);
+  console.log(carts);
+
+  const dispatch = useDispatch();
+  const handleAddToCart = () => {
+    dispatch(
+      addToCart({
+        productId: id,
+        quantity: 1,
+      })
+    );
+  };
+
   const { id, name, price, image, slug } = props.data;
   return (
     <div className="bg-white p-5 rounded-xl shadow-sm">
@@ -30,7 +56,10 @@ const ProductCart: React.FC<ProductCartProps> = (props) => {
           <p>
             $<span className="text-2xl font-medium">{price}</span>
           </p>
-          <button className="bg-gray-300 p-2 rounded-md text-sm hover:bg-gray-400 flex gap-2 items-center">
+          <button
+            onClick={handleAddToCart}
+            className="bg-gray-300 p-2 rounded-md text-sm hover:bg-gray-400 flex gap-2 items-center"
+          >
             <IoCartOutline className="text-2xl" />
             Add To Cart
           </button>
