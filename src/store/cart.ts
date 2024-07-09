@@ -9,13 +9,13 @@ interface CartItem {
 // Інтерфейс для стану кошика
 interface CartState {
   cartItems: CartItem[];
-  statusTab?: boolean; // Додано статус для вкладки
+  statusTab?: boolean; 
 }
 
 // Початковий стан з типом
 const initialState: CartState = {
-  cartItems: [],
-  statusTab: false, // Додано початковий статус для вкладки
+  cartItems: localStorage.getItem("carts") ? JSON.parse(localStorage.getItem("carts") as string) : [],
+  statusTab: false, 
 }
 
 const cartSlice = createSlice({
@@ -30,6 +30,7 @@ const cartSlice = createSlice({
       } else {
         state.cartItems.push({ productId, quantity });
       }
+      localStorage.setItem("carts", JSON.stringify(state.cartItems));
     },
     changeQuantity(state, action){
             const {productId, quantity} = action.payload;
@@ -41,7 +42,7 @@ const cartSlice = createSlice({
             }
             localStorage.setItem("carts", JSON.stringify(state.cartItems));
     },
-     toggleStatusTab(state){
+    toggleStatusTab(state){
             if(state.statusTab === false){
                 state.statusTab = true;
             }else{
