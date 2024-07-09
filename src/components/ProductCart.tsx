@@ -27,8 +27,9 @@ interface RootState {
 }
 
 const ProductCart: React.FC<ProductCartProps> = (props) => {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const carts = useSelector((store: RootState) => store.cart.cartItems);
-  console.log(carts);
+  // console.log(carts);
 
   const dispatch = useDispatch();
   const handleAddToCart = () => {

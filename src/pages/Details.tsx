@@ -17,7 +17,7 @@ interface Product {
 export default function Details() {
   const { slug } = useParams<{ slug: string }>();
   const [detail, setDetail] = useState<Product | null>(null);
-  const [quantity, setQuantity] = useState(1);
+  const [quantity, setQuantity] = useState(0);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -30,7 +30,7 @@ export default function Details() {
   }, [slug]);
 
   const handleMinusQuantity = () => {
-    setQuantity(quantity - 1 < 1 ? 1 : quantity - 1);
+    setQuantity(quantity - 1 < 0 ? 0 : quantity - 1);
   };
 
   const handlePlusQuantity = () => {
