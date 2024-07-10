@@ -41,7 +41,7 @@ export default function Header() {
           </Link>
           <div
             onClick={handleOpenTabCart}
-            className="flex justify-center items-center relative w-10 h-10 bg-gray-100 rounded-full"
+            className="flex justify-center items-center relative w-10 h-10 bg-gray-100 rounded-full cursor-pointer"
           >
             <IoCartOutline className="text-2xl" />
             <span className="absolute top-2/3 right-1/2 bg-red-500 text-white text-sm w-5 h-5 rounded-full flex justify-center items-center">
