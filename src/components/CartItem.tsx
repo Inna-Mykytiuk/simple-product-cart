@@ -2,15 +2,7 @@ import { useState, useEffect } from "react";
 import { products } from "../data/products";
 import { useDispatch } from "react-redux";
 import { changeQuantity } from "../store/cart";
-
-interface Product {
-  id: number;
-  name: string;
-  price: number;
-  image: string;
-  description: string;
-  slug: string;
-}
+import { ProductItemProps } from "../types/types";
 
 interface ProductCartProps {
   data: {
@@ -21,7 +13,7 @@ interface ProductCartProps {
 
 const CartItem: React.FC<ProductCartProps> = (props) => {
   const { productId, quantity } = props.data;
-  const [detail, setDetail] = useState<Product | null>(null);
+  const [detail, setDetail] = useState<ProductItemProps | null>(null);
   const dispatch = useDispatch();
 
   useEffect(() => {

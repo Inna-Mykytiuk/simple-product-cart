@@ -2,17 +2,11 @@ import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { toggleStatusTab } from "../store/cart";
 import CartItem from "./CartItem";
+import { CartItemProps } from "../types/types";
 
 interface RootState {
   cart: {
-    cartItems: Array<{
-      productId: number;
-      name: string;
-      price: number;
-      image: string;
-      slug: string;
-      quantity: number;
-    }>;
+    cartItems: Array<CartItemProps>;
     statusTab: boolean;
   };
 }

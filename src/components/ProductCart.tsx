@@ -3,26 +3,16 @@ import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { IoCartOutline } from "react-icons/io5";
 import { addToCart } from "../store/cart";
+import { ProductProps } from "../types/types";
 
 interface ProductCartProps {
-  data: {
-    id: number;
-    name: string;
-    price: number;
-    image: string;
-    slug: string;
-  };
+  data: ProductProps;
 }
 
+// Інтерфейс для стейту додатку
 interface RootState {
   cart: {
-    cartItems: Array<{
-      id: number;
-      name: string;
-      price: number;
-      image: string;
-      slug: string;
-    }>;
+    cartItems: Array<ProductProps>;
   };
 }
 
