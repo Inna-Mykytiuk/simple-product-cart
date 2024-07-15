@@ -25,7 +25,6 @@ export default function Layout() {
         </Suspense>
       </main>
       <CartTab />
-      {/* <Footer /> */}
     </>
   );
 }

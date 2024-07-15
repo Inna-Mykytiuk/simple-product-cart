@@ -15,19 +15,9 @@ function App() {
           <Route index element={<Home />} />
           <Route path="/:slug" element={<Details />} />
         </Route>
-        {/* <Route
-          path="*"
-          element={
-            <Suspense fallback={<Loader />}>
-              <NotFoundPage />
-            </Suspense>
-          }
-        /> */}
       </Routes>
     </>
   );
 }
 
 export default App;
-
-//test commit

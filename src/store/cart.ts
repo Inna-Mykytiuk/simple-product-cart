@@ -49,8 +49,6 @@ const cartSlice = createSlice({
   },
 });
 
-// Селектор для обчислення загальної суми
-
 
 export const { addToCart, changeQuantity, toggleStatusTab } = cartSlice.actions;
 

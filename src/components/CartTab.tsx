@@ -45,6 +45,7 @@ const CartTab: React.FC = () => {
         </div>
       )}
       <button
+        type="button"
         className="bg-black text-white w-full py-4"
         onClick={handleCloseTabCart}
       >

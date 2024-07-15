@@ -50,6 +50,7 @@ const CartItem: React.FC<ProductCartProps> = (props) => {
       <p>${detail.price * quantity}</p>
       <div className="w-20 flex justify-between gap-2">
         <button
+          type="button"
           className="bg-gray-200 rounded-full w-6 h-6 text-cyan-600"
           onClick={handleMinusQuantity}
         >
@@ -57,6 +58,7 @@ const CartItem: React.FC<ProductCartProps> = (props) => {
         </button>
         <span>{quantity}</span>
         <button
+          type="button"
           className="bg-gray-200 rounded-full w-6 h-6 text-cyan-600"
           onClick={handlePlusQuantity}
         >

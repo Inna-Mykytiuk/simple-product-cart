@@ -49,6 +49,7 @@ const ProductCart: React.FC<ProductCartProps> = (props) => {
           $<span className="text-xl font-medium">{price}</span>
         </p>
         <button
+          type="button"
           onClick={handleAddToCart}
           className="bg-gray-300 p-2 rounded-md text-sm hover:bg-gray-400 flex gap-2 items-center transition-all ease-out duration-300"
           aria-label="Add to cart"
