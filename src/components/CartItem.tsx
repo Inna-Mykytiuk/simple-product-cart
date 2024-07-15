@@ -3,12 +3,10 @@ import { products } from "../data/products";
 import { useDispatch } from "react-redux";
 import { changeQuantity } from "../store/cart";
 import { ProductItemProps } from "../types/types";
+import { ProductProps } from "../types/types";
 
 interface ProductCartProps {
-  data: {
-    productId: number;
-    quantity: number;
-  };
+  data: ProductProps;
 }
 
 const CartItem: React.FC<ProductCartProps> = (props) => {

@@ -26,6 +26,7 @@ const ProductCart: React.FC<ProductCartProps> = (props) => {
       addToCart({
         productId: id,
         quantity: 1,
+        price: props.data.price,
       })
     );
   };

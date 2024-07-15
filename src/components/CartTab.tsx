@@ -1,6 +1,7 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { toggleStatusTab } from "../store/cart";
+import { calculateTotal } from "../store/selectors";
 import CartItem from "./CartItem";
 import { CartItemProps } from "../types/types";
 
@@ -14,6 +15,9 @@ interface RootState {
 const CartTab: React.FC = () => {
   const carts = useSelector((store: RootState) => store.cart.cartItems);
   const statusTab = useSelector((store: RootState) => store.cart.statusTab);
+  const totalAmount = useSelector((store: RootState) =>
+    calculateTotal(store.cart)
+  );
   const dispatch = useDispatch();
 
   const handleCloseTabCart = () => {
@@ -28,17 +32,24 @@ const CartTab: React.FC = () => {
     `}
     >
       <h2 className="p-5 text-white text-2xl">Shopping Cart</h2>
-      <div className="p-5">
-        {carts.map((item, key) => (
-          <CartItem key={key} data={item} />
-        ))}
+      <div className=" p-5">
+        {carts.length === 0 ? (
+          <p className="text-white text-xl text-center">Your cart is empty</p>
+        ) : (
+          carts.map((item, key) => <CartItem key={key} data={item} />)
+        )}
       </div>
-      <div className="grid grid-cols-2">
-        <button className="bg-black text-white" onClick={handleCloseTabCart}>
-          CLOSE
-        </button>
-        <button className="bg-amber-600 text-white">CHECKOUT</button>
-      </div>
+      {carts.length > 0 && (
+        <div className="p-5 text-white text-2xl">
+          Total: ${totalAmount.toFixed(2)}
+        </div>
+      )}
+      <button
+        className="bg-black text-white w-full py-4"
+        onClick={handleCloseTabCart}
+      >
+        CLOSE
+      </button>
     </div>
   );
 };

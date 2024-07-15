@@ -4,10 +4,11 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 interface CartItem {
   productId: number;
   quantity: number;
+  price?: number; 
 }
 
 // Інтерфейс для стану кошика
-interface CartState {
+export interface CartState {
   cartItems: CartItem[];
   statusTab?: boolean; 
 }
@@ -23,34 +24,33 @@ const cartSlice = createSlice({
   initialState,
   reducers: {
     addToCart: (state, action: PayloadAction<CartItem>) => {
-      const { productId, quantity } = action.payload;
+      const { productId, quantity, price } = action.payload;
       const indexProductId = state.cartItems.findIndex(item => item.productId === productId);
       if (indexProductId >= 0) {
         state.cartItems[indexProductId].quantity += quantity;
       } else {
-        state.cartItems.push({ productId, quantity });
+        state.cartItems.push({ productId, quantity, price });
       }
       localStorage.setItem("carts", JSON.stringify(state.cartItems));
     },
-    changeQuantity(state, action){
-            const {productId, quantity} = action.payload;
-            const indexProductId = (state.cartItems).findIndex(item => item.productId === productId);
-            if(quantity > 0){
-                state.cartItems[indexProductId].quantity = quantity;
-            }else{
-                state.cartItems = (state.cartItems).filter(item => item.productId !== productId);
-            }
-            localStorage.setItem("carts", JSON.stringify(state.cartItems));
+    changeQuantity(state, action: PayloadAction<{ productId: number, quantity: number }>) {
+      const { productId, quantity } = action.payload;
+      const indexProductId = state.cartItems.findIndex(item => item.productId === productId);
+      if (quantity > 0) {
+        state.cartItems[indexProductId].quantity = quantity;
+      } else {
+        state.cartItems = state.cartItems.filter(item => item.productId !== productId);
+      }
+      localStorage.setItem("carts", JSON.stringify(state.cartItems));
     },
-    toggleStatusTab(state){
-            if(state.statusTab === false){
-                state.statusTab = true;
-            }else{
-                state.statusTab = false;
-            }
-        }
+    toggleStatusTab(state) {
+      state.statusTab = !state.statusTab;
+    }
   },
 });
+
+// Селектор для обчислення загальної суми
+
 
 export const { addToCart, changeQuantity, toggleStatusTab } = cartSlice.actions;
 

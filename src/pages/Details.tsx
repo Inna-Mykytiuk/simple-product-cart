@@ -43,6 +43,7 @@ export default function Details() {
         addToCart({
           productId: detail.id,
           quantity: quantity,
+          price: detail.price,
         })
       );
     }
